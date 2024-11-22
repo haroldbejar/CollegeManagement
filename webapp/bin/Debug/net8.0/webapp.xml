@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapp</name>
+    </assembly>
+    <members>
+        <member name="T:webapp.Controllers.AcountController">
+            <summary>
+            Acount Controller
+            </summary>
+        </member>
+        <member name="M:webapp.Controllers.AcountController.#ctor(Application.Services.ITokenService,Application.Services.IAcountService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="tokenService"></param>
+            <param name="acountService"></param>
+        </member>
+        <member name="M:webapp.Controllers.AcountController.Register(Data.DTOs.RegisterDTO)">
+            <summary>
+            Register
+            </summary>
+            <param name="resgisterDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AcountController.Login(Data.DTOs.RegisterDTO)">
+            <summary>
+            Login
+            </summary>
+            <param name="registerUser"></param>
+            <returns></returns>
+        </member>
+        <member name="T:webapp.Controllers.AlumnoController">
+            <summary>
+            Alumno Controller
+            </summary>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoController.#ctor(Application.Services.IService{Data.DTOs.AlumnoDTO})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoController.CreateAsync(Data.DTOs.AlumnoDTO)">
+            <summary>
+            Create Alumno
+            </summary>
+            <param name="alumnoDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete Alumno
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoController.GetAllAsync(System.Int32,System.Int32)">
+            <summary>
+            Get All Alumnos
+            </summary>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get Alumno by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoController.UpdateAsync(Data.DTOs.AlumnoDTO,System.Int32)">
+            <summary>
+            Update Alumno
+            </summary>
+            <param name="alumnoDTO"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:webapp.Controllers.AlumnoGradoController">
+            <summary>
+            AlumnoGrado Controller
+            </summary>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoGradoController.#ctor(Application.Services.IService{Data.DTOs.AlumnoGradoDTO},Application.Services.IAlumnoGradoService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="service"></param>
+            <param name="alumnoGradoService"></param>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoGradoController.CreateAsync(Data.DTOs.AlumnoGradoDTO)">
+            <summary>
+            Create
+            </summary>
+            <param name="alumnoGradoDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoGradoController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoGradoController.GetAllAsync(System.Int32,System.Int32)">
+            <summary>
+            GetAll
+            </summary>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoGradoController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.AlumnoGradoController.UpdateAsync(Data.DTOs.AlumnoGradoDTO,System.Int32)">
+            <summary>
+            Update
+            </summary>
+            <param name="alumnoGradoDTO"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:webapp.Controllers.GradoController">
+            <summary>
+            Grado
+            </summary>
+        </member>
+        <member name="M:webapp.Controllers.GradoController.#ctor(Application.Services.IService{Data.DTOs.GradoDTO})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:webapp.Controllers.GradoController.CreateAsync(Data.DTOs.GradoDTO)">
+            <summary>
+            Create
+            </summary>
+            <param name="gradoDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.GradoController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.GradoController.GetAllAsync(System.Int32,System.Int32)">
+            <summary>
+            GetAll
+            </summary>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.GradoController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.GradoController.UpdateAsync(Data.DTOs.GradoDTO,System.Int32)">
+            <summary>
+            Update
+            </summary>
+            <param name="gradoDTO"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:webapp.Controllers.IBaseController`1">
+            <summary>
+            Interfaz para el crud
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:webapp.Controllers.IBaseController`1.GetAllAsync(System.Int32,System.Int32)">
+            <summary>
+            Get all
+            </summary>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns>All the elements paginated</returns>
+        </member>
+        <member name="M:webapp.Controllers.IBaseController`1.GetByIdAsync(System.Int32)">
+            <summary>
+            GetbyID
+            </summary>
+            <param name="id"></param>
+            <returns>An element</returns>
+        </member>
+        <member name="M:webapp.Controllers.IBaseController`1.CreateAsync(`0)">
+            <summary>
+            Create an element
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.IBaseController`1.UpdateAsync(`0,System.Int32)">
+            <summary>
+            Update element
+            </summary>
+            <param name="entity"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.IBaseController`1.DeleteAsync(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:webapp.Controllers.ProfesorController">
+            <summary>
+            Profesor Controller
+            </summary>
+        </member>
+        <member name="M:webapp.Controllers.ProfesorController.#ctor(Application.Services.IService{Data.DTOs.ProfesorDTO})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:webapp.Controllers.ProfesorController.CreateAsync(Data.DTOs.ProfesorDTO)">
+            <summary>
+            Create profesor
+            </summary>
+            <param name="profesorDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.ProfesorController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.ProfesorController.GetAllAsync(System.Int32,System.Int32)">
+            <summary>
+            Get All profesores
+            </summary>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.ProfesorController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get by Id profesor
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapp.Controllers.ProfesorController.UpdateAsync(Data.DTOs.ProfesorDTO,System.Int32)">
+            <summary>
+            Update profesor
+            </summary>
+            <param name="profesorDTO"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

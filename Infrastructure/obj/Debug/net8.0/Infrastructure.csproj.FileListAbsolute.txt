@@ -1,0 +1,15 @@
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\bin\Debug\net8.0\Data.dll
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\bin\Debug\net8.0\Data.pdb
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
