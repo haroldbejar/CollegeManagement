@@ -1,0 +1,44 @@
+# Compiled binary and object files
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build directories
+build/
+[Bb]uild/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+# Logs and database
+*.log
+*.tlog
+*.sql
+*.sqlite
+
+# Rider files
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# npm and yarn
+node_modules/
+yarn-error.log
+.yarn-integrity
+
+# Environment variables
+.env
+.env.*.local
+
+# Dependencies
+*.nupkg
+*.snupkg
