@@ -13,3 +13,4 @@ C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastruc
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json

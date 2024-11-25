@@ -12,3 +12,4 @@ C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Data\obj\D
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Data\obj\Debug\net8.0\Data.pdb
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Data\obj\Debug\net8.0\Data.genruntimeconfig.cache
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Data\obj\Debug\net8.0\ref\Data.dll
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\Data\obj\Debug\net8.0\Data.sourcelink.json

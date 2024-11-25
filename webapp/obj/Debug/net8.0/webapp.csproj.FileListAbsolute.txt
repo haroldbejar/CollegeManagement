@@ -149,3 +149,4 @@ C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\webapp\bin
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\webapp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\webapp\bin\Debug\net8.0\webapp.xml
 C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\webapp\obj\Debug\net8.0\webapp.xml
+C:\Users\harol\OneDrive\Escritorio\SchoolManagement\CollegeManagement\webapp\obj\Debug\net8.0\webapp.sourcelink.json
