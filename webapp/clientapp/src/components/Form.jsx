@@ -10,6 +10,13 @@ const Form = ({ fields, onSubmit, initialValues = {} }) => {
     onSubmit(formData);
   };
 
+  const formatValue = (field) => {
+    if (field.type === "date" && initialValues[field.name]) {
+      return new Date(initialValues[field.name]).toISOString().split("T")[0];
+    }
+    return initialValues[field.name] || "";
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -25,7 +32,7 @@ const Form = ({ fields, onSubmit, initialValues = {} }) => {
               name={field.name}
               id={field.name}
               className="border px-4 py-2 rounded focus:outline-none focus:ring focus:ring-blue-300"
-              defaultValue={initialValues[field.name] || ""}
+              value={initialValues[field.name] || ""}
             >
               <option value="" disabled>
                 {field.placeholder || "Seleccione una opción"}
@@ -42,7 +49,7 @@ const Form = ({ fields, onSubmit, initialValues = {} }) => {
               name={field.name}
               id={field.name}
               placeholder={field.placeholder || ""}
-              defaultValue={initialValues[field.name] || ""}
+              value={formatValue(field)}
               className="border px-4 py-2 rounded focus:outline-none focus:ring focus:ring-blue-300"
             />
           )}
