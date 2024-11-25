@@ -42,3 +42,5 @@ yarn-error.log
 # Dependencies
 *.nupkg
 *.snupkg
+
+.fake
