@@ -6,9 +6,10 @@ import { FetchContext } from "../context/fecth.context";
 import { UserContext } from "../context/user.context";
 
 const Alumnos = () => {
-  const { get, post, put, remove, data, setData } = useContext(FetchContext);
+  const { get, post, put, remove, data } = useContext(FetchContext);
   const { token } = useContext(UserContext);
   const [editingAlumno, setEditingAlumno] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
 
   const formFields = [
     {
@@ -64,6 +65,7 @@ const Alumnos = () => {
 
   const handleEdit = (alumno) => {
     setEditingAlumno(alumno);
+    setIsEdit(true);
   };
 
   const handleDeleteAlumno = async (alumno) => {
@@ -99,6 +101,7 @@ const Alumnos = () => {
         fields={formFields}
         onSubmit={handleAddAlumno}
         initialValues={editingAlumno || {}}
+        editing={isEdit}
       />
 
       <Table

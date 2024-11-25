@@ -1,6 +1,13 @@
 import React from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
 
+const isDate = (value) => {
+  return (
+    value instanceof Date ||
+    (typeof value === "string" && !isNaN(Date.parse(value)))
+  );
+};
+
 const Table = ({ headers, datos, onEdit, onDelete }) => {
   return (
     <table className="w-full border-collapse border border-gray-200">
@@ -27,7 +34,9 @@ const Table = ({ headers, datos, onEdit, onDelete }) => {
             <tr key={index} className="even:bg-gray-100">
               {headers.map((header) => (
                 <td key={header} className="border border-gray-300 px-4 py-2">
-                  {row[header]}
+                  {isDate(row[header])
+                    ? new Date(row[header]).toISOString().split("T")[0]
+                    : row[header]}
                 </td>
               ))}
 
