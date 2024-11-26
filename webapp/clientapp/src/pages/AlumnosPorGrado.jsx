@@ -9,6 +9,7 @@ const AlumnosPorGrado = () => {
   const { post, get, put, remove, data, setData } = useContext(FetchContext);
   const { token } = useContext(UserContext);
   const [editingAlumGrados, setEditingAlumGrados] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
 
   const formFields = [
     {
@@ -67,6 +68,7 @@ const AlumnosPorGrado = () => {
 
   const handleEditAlumGrados = async (asignacion) => {
     setEditingAlumGrados(asignacion);
+    setIsEdit(true);
   };
 
   const handleDeleteAsignacion = async (asignacion) => {
@@ -137,6 +139,7 @@ const AlumnosPorGrado = () => {
         fields={formFields}
         onSubmit={handleAddAsignacion}
         initialValues={editingAlumGrados || {}}
+        editing={isEdit}
       />
 
       <Table

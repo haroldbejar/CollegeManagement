@@ -39,6 +39,7 @@ const Alumnos = () => {
       label: "Fecha de Nacimiento",
       placeholder: "",
       type: "date",
+      max: new Date().toISOString().split("T")[0],
     },
   ];
 

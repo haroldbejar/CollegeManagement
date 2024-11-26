@@ -9,6 +9,7 @@ const Grados = () => {
   const { post, get, put, remove, data, setData } = useContext(FetchContext);
   const { token } = useContext(UserContext);
   const [editingGrado, setEditingGrado] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
 
   const formFields = [
     {
@@ -52,6 +53,7 @@ const Grados = () => {
 
   const handleEditGrado = (grado) => {
     setEditingGrado(grado);
+    setIsEdit(true);
   };
 
   const handleDeleteGrado = async (grado) => {
@@ -108,6 +110,7 @@ const Grados = () => {
         fields={formFields}
         onSubmit={handleAddGrado}
         initialValues={editingGrado || {}}
+        editing={isEdit}
       />
 
       <Table

@@ -64,6 +64,7 @@ const Form = ({ fields, onSubmit, initialValues = {}, editing }) => {
             </select>
           ) : (
             <input
+              {...field}
               type={field.type || "text"}
               name={field.name}
               id={field.name}

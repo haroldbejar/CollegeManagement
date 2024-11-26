@@ -9,6 +9,7 @@ const Profesores = () => {
   const { post, get, put, remove, data } = useContext(FetchContext);
   const { token } = useContext(UserContext);
   const [editingProfesor, setEditingProfesor] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
 
   const formFields = [
     {
@@ -52,6 +53,7 @@ const Profesores = () => {
 
   const handleEditProfesor = (profesor) => {
     setEditingProfesor(profesor);
+    setIsEdit(true);
   };
 
   const handleDeleteProfesor = async (profesor) => {
@@ -87,6 +89,7 @@ const Profesores = () => {
         fields={formFields}
         onSubmit={handleAddProfesor}
         initialValues={editingProfesor || {}}
+        editing={isEdit}
       />
 
       <Table
