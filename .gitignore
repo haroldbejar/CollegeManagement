@@ -1,6 +1,7 @@
 # Compiled binary and object files
 bin/
 obj/
+node_modules/
 
 # User-specific files
 *.user
