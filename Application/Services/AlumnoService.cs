@@ -5,15 +5,36 @@ using Infrastructure.Repositoties;
 
 namespace Application.Services
 {
-    public class AlumnoService : IService<AlumnoDTO>
+    public class AlumnoService : IService<AlumnoDTO>, IAlumnoService
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Alumno> _repository;
 
-        public AlumnoService(IMapper mapper, IRepository<Alumno> repository)
+        private readonly IAlumnoRepostiroy _alumnoRepository;
+
+        public AlumnoService(IMapper mapper, IRepository<Alumno> repository, IAlumnoRepostiroy alumnoRepository)
         {
             _mapper = mapper;
             _repository = repository;
+            _alumnoRepository = alumnoRepository;
+        }
+
+        public AlumnoCreateDTO MapAlumnoDTO(AlumnoDTO alumnoDTO)
+        {
+            var alumnoCreateDTO = _mapper.Map<AlumnoCreateDTO>(alumnoDTO);
+            return alumnoCreateDTO;
+        }
+
+        public async Task AddAlumnoAsync(AlumnoCreateDTO alumnoDTO)
+        {
+            bool containstNumberName = alumnoDTO.Nombre.Any(char.IsDigit);
+            bool containsNumberLastName = alumnoDTO.Apellido.Any(char.IsDigit);
+            if (containstNumberName || containsNumberLastName)
+                throw new ArgumentException("El nombre del alumno no puede contener números");
+
+            var alumno = _mapper.Map<Alumno>(alumnoDTO);
+            await _repository.AddAsync(alumno);
+
         }
 
         public async Task AddAsync(AlumnoDTO alumnoDTO)
@@ -33,6 +54,12 @@ namespace Application.Services
             var alumno = await _repository.GetByIdAsync(id);
             if (alumno == null) throw new ArgumentException("Alumno not found");
             await _repository.DeleteAsync(id);
+        }
+
+        public async Task<IReadOnlyCollection<AlumnoDTO>> GetAllAlumnos(int pageNumber, int pageSize)
+        {
+            var alumnos = await _alumnoRepository.GetAllAlumnos(pageNumber, pageSize);
+            return _mapper.Map<IReadOnlyCollection<AlumnoDTO>>(alumnos);
         }
 
         public async Task<IEnumerable<AlumnoDTO>> GetAllAsync(int pageNumber, int pageSize)

@@ -10,6 +10,10 @@ namespace Data.Profiles
         {
             CreateMap<Alumno, AlumnoDTO>();
             CreateMap<AlumnoDTO, Alumno>();
+            CreateMap<AlumnoCreateDTO, Alumno>();
+            CreateMap<Alumno, AlumnoCreateDTO>();
+            CreateMap<AlumnoDTO, AlumnoCreateDTO>();
+            CreateMap<AlumnoCreateDTO, AlumnoDTO>();
         }
     }
 }

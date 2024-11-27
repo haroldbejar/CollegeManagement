@@ -15,6 +15,7 @@ namespace Application
             services.AddScoped<IAlumnoGradoService, AlumnoGradoService>();
             services.AddScoped<IAcountService, AcountService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IAlumnoService, AlumnoService>();
             return services;
         }
     }

@@ -13,14 +13,17 @@ namespace webapp.Controllers
     public class AlumnoController : ControllerBase, IBaseController<AlumnoDTO>
     {
         private readonly IService<AlumnoDTO> _service;
+        private readonly IAlumnoService _alumnoService;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="service"></param>
-        public AlumnoController(IService<AlumnoDTO> service)
+        /// <param name="alumnoService"></param>
+        public AlumnoController(IService<AlumnoDTO> service, IAlumnoService alumnoService)
         {
             _service = service;
+            _alumnoService = alumnoService;
         }
 
         /// <summary>
@@ -33,8 +36,14 @@ namespace webapp.Controllers
         {
             try
             {
-                await _service.AddAsync(alumnoDTO);
+                // await _service.AddAsync(alumnoDTO);
+                var alumnoCreateDTO = _alumnoService.MapAlumnoDTO(alumnoDTO);
+                await _alumnoService.AddAlumnoAsync(alumnoCreateDTO);
                 return Ok(new { datos = alumnoDTO });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
             }
             catch (Exception ex)
             {
@@ -76,7 +85,8 @@ namespace webapp.Controllers
             try
             {
                 var totalItems = await _service.CountAsync();
-                var datos = await _service.GetAllAsync(pageNumber, pageSize);
+                var datos = await _alumnoService.GetAllAlumnos(pageNumber, pageSize);
+                // var datos = await _service.GetAllAsync(pageNumber, pageSize);
 
                 var paginationData = new
                 {

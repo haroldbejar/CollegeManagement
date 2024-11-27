@@ -4,7 +4,7 @@ const FetchContext = createContext();
 
 function FetchProvider(props) {
   const [data, setData] = useState({});
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
   const fetchHandler = async ({ url, method = "GET", body, token }) => {
@@ -18,21 +18,26 @@ function FetchProvider(props) {
       if (body) options.body = JSON.stringify(body);
 
       const response = await fetch(url, options);
-      if (!response.ok)
+      if (!response.ok) {
+        debugger;
+        const errorData = await response.json();
+        // TODO: crear funcion para desplegar mensajes
+        alert(`error: ${errorData.mensaje}`);
         throw new Error(`Error en la solicitud: ${response.status}`);
+      }
 
       const contentType = response.headers.get("Content-Type");
       if (contentType && contentType.includes("application/json")) {
         const dataJson = await response.json();
-
+        setMessage(dataJson.mensaje);
         return dataJson.datos || dataJson;
       }
 
       return null;
-    } catch (error) {
-      setError(error.message);
-      setMessage(error.message);
-      throw error;
+    } catch (err) {
+      setError(err.message);
+      console.log(err.message);
+      throw err;
     }
   };
 

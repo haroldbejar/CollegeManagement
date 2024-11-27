@@ -15,6 +15,7 @@ namespace Infrastructure
             services.AddScoped<Repository<AlumnoGrado>, AlumnoGradoRepository>();
             services.AddScoped<IAlumnoGradoRepository, AlumnoGradoRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAlumnoRepostiroy, AlumnoRepository>();
             return services;
         }
     }

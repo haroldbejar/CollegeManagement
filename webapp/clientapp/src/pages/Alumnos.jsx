@@ -10,6 +10,7 @@ const Alumnos = () => {
   const { token } = useContext(UserContext);
   const [editingAlumno, setEditingAlumno] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
 
   const formFields = [
     {
@@ -43,7 +44,7 @@ const Alumnos = () => {
     },
   ];
 
-  const tableHeaders = ["nombre", "apellido", "genero", "fechaNacimiento"];
+  const tableHeaders = ["nombreCompleto", "genero", "fechaNacimiento"];
 
   const handleAddAlumno = async (formData) => {
     try {
@@ -59,8 +60,8 @@ const Alumnos = () => {
       }
       setEditingAlumno(null);
       await get(`${endPoints.alumnos.list}/1/15`, token, "alumnos");
-    } catch (error) {
-      console.error("Error al agregar o editar alumno", error);
+    } catch (err) {
+      console.error(`Error al agregar o editar alumno, ${err}`);
     }
   };
 
@@ -69,24 +70,32 @@ const Alumnos = () => {
     setIsEdit(true);
   };
 
-  const handleDeleteAlumno = async (alumno) => {
+  const handleDeleteAlumno = (alumno) => {
+    alert(`Realmente desea eliminar el alumno: ${alumno.nombre}`);
+    setIsDelete(true);
+    deleteAlumno(isDelete, alumno);
+  };
+
+  const deleteAlumno = async (isDelete, alumno) => {
     try {
-      await remove(
-        `${endPoints.alumnos.base}/${alumno.id}`,
-        token,
-        "alumnos",
-        alumno.id
-      );
-    } catch (error) {
-      console.error(error);
+      if (isDelete) {
+        await remove(
+          `${endPoints.alumnos.base}/${alumno.id}`,
+          token,
+          "alumnos",
+          alumno.id
+        );
+      }
+    } catch (err) {
+      console.error(err);
     }
   };
 
   const fetchAlumnos = () => {
     try {
       get(`${endPoints.alumnos.list}/1/15`, token, "alumnos");
-    } catch (error) {
-      console.error("Error al obtener alumnos", error);
+    } catch (err) {
+      console.error("Error al obtener alumnos", err);
     }
   };
 
