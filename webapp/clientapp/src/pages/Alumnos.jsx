@@ -4,13 +4,15 @@ import Table from "../components/Table";
 import endPoints from "../endpoints/enpoint";
 import { FetchContext } from "../context/fecth.context";
 import { UserContext } from "../context/user.context";
+import ModalDialog from "../components/ModalDialog";
 
 const Alumnos = () => {
   const { get, post, put, remove, data } = useContext(FetchContext);
   const { token } = useContext(UserContext);
   const [editingAlumno, setEditingAlumno] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
-  const [isDelete, setIsDelete] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedAlumno, setSelectedAlumno] = useState(null);
 
   const formFields = [
     {
@@ -70,25 +72,33 @@ const Alumnos = () => {
     setIsEdit(true);
   };
 
-  const handleDeleteAlumno = (alumno) => {
-    alert(`Realmente desea eliminar el alumno: ${alumno.nombre}`);
-    setIsDelete(true);
-    deleteAlumno(isDelete, alumno);
+  const openModalDelete = (alumno) => {
+    setSelectedAlumno(alumno);
+    setShowModal(true);
   };
 
-  const deleteAlumno = async (isDelete, alumno) => {
+  const handleDeleteAlumno = () => {
+    if (selectedAlumno) {
+      deleteAlumno(selectedAlumno);
+    }
+    setShowModal(false);
+  };
+
+  const deleteAlumno = async (alumno) => {
     try {
-      if (isDelete) {
-        await remove(
-          `${endPoints.alumnos.base}/${alumno.id}`,
-          token,
-          "alumnos",
-          alumno.id
-        );
-      }
+      await remove(
+        `${endPoints.alumnos.base}/${alumno.id}`,
+        token,
+        "alumnos",
+        alumno.id
+      );
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   const fetchAlumnos = () => {
@@ -117,9 +127,16 @@ const Alumnos = () => {
       <Table
         headers={tableHeaders}
         datos={data.alumnos || []}
-        onDelete={handleDeleteAlumno}
+        onDelete={openModalDelete}
         onEdit={handleEdit}
       />
+      {showModal && (
+        <ModalDialog
+          message={`¿Está seguro de eliminar a "${selectedAlumno.nombre} ${selectedAlumno.apellido}" ? `}
+          onConfirm={handleDeleteAlumno}
+          onCancel={closeModal}
+        />
+      )}
     </div>
   );
 };

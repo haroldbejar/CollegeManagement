@@ -15,6 +15,7 @@ import AlumnosPorGrado from "./pages/AlumnosPorGrado";
 
 const App = () => {
   const { token } = useContext(UserContext);
+
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
