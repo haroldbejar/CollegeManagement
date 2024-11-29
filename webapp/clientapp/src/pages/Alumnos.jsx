@@ -7,7 +7,8 @@ import { UserContext } from "../context/user.context";
 import ModalDialog from "../components/ModalDialog";
 
 const Alumnos = () => {
-  const { get, post, put, remove, data } = useContext(FetchContext);
+  const { get, post, put, remove, data, error, message } =
+    useContext(FetchContext);
   const { token } = useContext(UserContext);
   const [editingAlumno, setEditingAlumno] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
@@ -137,6 +138,7 @@ const Alumnos = () => {
           onCancel={closeModal}
         />
       )}
+      {/* <ModalAlert error={false} message="Algo salio mal" /> */}
     </div>
   );
 };

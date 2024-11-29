@@ -1,11 +1,33 @@
 import { useState, createContext } from "react";
+import ModalAlert from "../components/ModalAlert";
 
 const FetchContext = createContext();
 
 function FetchProvider(props) {
   const [data, setData] = useState({});
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
+  const [msg, setMsg] = useState(""); // TODO: delete this function
+  const [modalConfig, setModalConfig] = useState({
+    isVisible: false,
+    isError: false,
+    message: "",
+  });
+
+  const showModalAlert = (errorData) => {
+    let isError = errorData ? true : false;
+    setModalConfig((prev) => ({
+      ...prev,
+      isVisible: false,
+    }));
+
+    setTimeout(() => {
+      setModalConfig({
+        isVisible: true,
+        isError,
+        message: errorData || "Ha ocurrido un error",
+      });
+    });
+  };
 
   const fetchHandler = async ({ url, method = "GET", body, token }) => {
     try {
@@ -19,24 +41,20 @@ function FetchProvider(props) {
 
       const response = await fetch(url, options);
       if (!response.ok) {
-        debugger;
         const errorData = await response.json();
-        // TODO: crear funcion para desplegar mensajes
-        alert(`error: ${errorData.mensaje}`);
+        showModalAlert(errorData.mensaje);
         throw new Error(`Error en la solicitud: ${response.status}`);
       }
 
       const contentType = response.headers.get("Content-Type");
       if (contentType && contentType.includes("application/json")) {
         const dataJson = await response.json();
-        setMessage(dataJson.mensaje);
         return dataJson.datos || dataJson;
       }
 
       return null;
     } catch (err) {
-      setError(err.message);
-      console.log(err.message);
+      setError(true);
       throw err;
     }
   };
@@ -49,7 +67,6 @@ function FetchProvider(props) {
     } else {
       setData(datos);
     }
-    setMessage("Success!");
   };
 
   const post = async (url, bodyData, token, resourceKey) => {
@@ -67,12 +84,14 @@ function FetchProvider(props) {
     } else {
       setData(datos);
     }
-    setMessage("Success!");
+    // TODO: change to showModalAlert
+    setMsg("Registro grabado!");
   };
 
   const put = async (url, updateData, token) => {
     await fetchHandler({ url, method: "PUT", body: updateData, token });
-    setMessage("Actualizado correctamente!");
+    // TODO: change to showModalAlert
+    setMsg("Actualizado correctamente!");
   };
 
   const remove = async (url, token, resourceKey, id) => {
@@ -83,7 +102,8 @@ function FetchProvider(props) {
         [resourceKey]: prev[resourceKey].filter((item) => item.id !== id),
       }));
     }
-    setMessage("Eliminado correctamente!");
+    // TODO: change to showModalAlert
+    setMsg("Eliminado correctamente!");
   };
 
   return (
@@ -91,7 +111,6 @@ function FetchProvider(props) {
       value={{
         data,
         error,
-        message,
         get,
         post,
         put,
@@ -100,6 +119,9 @@ function FetchProvider(props) {
       }}
     >
       {props.children}
+      {modalConfig.isVisible && (
+        <ModalAlert error={modalConfig.isError} message={modalConfig.message} />
+      )}
     </FetchContext.Provider>
   );
 }

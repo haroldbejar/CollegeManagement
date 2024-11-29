@@ -47,7 +47,7 @@ namespace webapp.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno {ex.Message}");
+                return StatusCode(500, new { mensaje = $"Error interno {ex.Message}" });
             }
         }
 
