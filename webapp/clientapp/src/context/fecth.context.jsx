@@ -6,15 +6,14 @@ const FetchContext = createContext();
 function FetchProvider(props) {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
-  const [msg, setMsg] = useState(""); // TODO: delete this function
   const [modalConfig, setModalConfig] = useState({
     isVisible: false,
     isError: false,
     message: "",
   });
 
-  const showModalAlert = (errorData) => {
-    let isError = errorData ? true : false;
+  const showModalAlert = (errorMessage = null, sucessMessage = null) => {
+    let isError = errorMessage ? true : false;
     setModalConfig((prev) => ({
       ...prev,
       isVisible: false,
@@ -24,7 +23,7 @@ function FetchProvider(props) {
       setModalConfig({
         isVisible: true,
         isError,
-        message: errorData || "Ha ocurrido un error",
+        message: errorMessage ?? sucessMessage,
       });
     });
   };
@@ -42,7 +41,7 @@ function FetchProvider(props) {
       const response = await fetch(url, options);
       if (!response.ok) {
         const errorData = await response.json();
-        showModalAlert(errorData.mensaje);
+        showModalAlert(errorData.mensaje, null);
         throw new Error(`Error en la solicitud: ${response.status}`);
       }
 
@@ -84,14 +83,12 @@ function FetchProvider(props) {
     } else {
       setData(datos);
     }
-    // TODO: change to showModalAlert
-    setMsg("Registro grabado!");
+    showModalAlert(null, "Registro grabado!");
   };
 
   const put = async (url, updateData, token) => {
     await fetchHandler({ url, method: "PUT", body: updateData, token });
-    // TODO: change to showModalAlert
-    setMsg("Actualizado correctamente!");
+    showModalAlert(null, "Registro actualizado!");
   };
 
   const remove = async (url, token, resourceKey, id) => {
@@ -102,8 +99,7 @@ function FetchProvider(props) {
         [resourceKey]: prev[resourceKey].filter((item) => item.id !== id),
       }));
     }
-    // TODO: change to showModalAlert
-    setMsg("Eliminado correctamente!");
+    showModalAlert(null, "Registro eliminado!");
   };
 
   return (
